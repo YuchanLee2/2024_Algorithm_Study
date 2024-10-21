@@ -1,0 +1,63 @@
+import java.util.*;
+class Solution {
+    public int solution(int bridge_length, int weight, int[] truck_weights) {
+  
+        int answer = 0;
+
+        boolean[] visited = new boolean[truck_weights.length];
+
+        Queue<int[]> waiting_trucks = new LinkedList<>();
+
+        for(int i=0;i<truck_weights.length;i++){
+            waiting_trucks.offer(new int[]{i,0,truck_weights[i]}); 
+        }
+
+        Queue<int[]> moving_trucks = new LinkedList<>();
+       
+        int time=0;
+       
+        int t_weight=0;
+
+        while(!waiting_trucks.isEmpty() || !moving_trucks.isEmpty()){
+
+            time+=1;
+            if(!waiting_trucks.isEmpty()){ 
+                int[] now = waiting_trucks.peek();
+                int i = now[0]; 
+                int p = now[1]; 
+                int w = now[2]; 
+                
+                if(t_weight+w<=weight){ 
+                    t_weight+=w;
+                    moving_trucks.offer(waiting_trucks.poll());
+                }
+            }
+        
+            int cnt=0;    
+            int size=moving_trucks.size();
+
+            while(cnt<size){
+                int[] next = moving_trucks.poll();
+                int ni = next[0]; 
+                int np = next[1]; 
+                int nw = next[2]; 
+                
+
+                if(bridge_length==np+1){
+                    visited[ni]=true; 
+                    t_weight-=nw;    
+
+                }else{
+                     moving_trucks.offer(new int[]{ni,np+1,nw});
+                }
+                cnt++;
+            }
+            
+            if(visited[truck_weights.length-1]){
+                return time+1;
+            }
+            
+        }
+        return answer;
+    }
+}
