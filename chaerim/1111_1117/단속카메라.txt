@@ -1,0 +1,21 @@
+import java.util.*;
+class Solution {
+    public int solution(int[][] routes) {
+
+        List<int[]> list = new ArrayList<>();
+        
+        for(int[] r : routes) list.add(r);
+        
+        Collections.sort(list, (o1,o2)->o1[1]-o2[1]);
+
+        int count = 0;
+        int min = -30000;
+        for(int[] route : list){
+            if(min>=route[0] && min<=route[1]) continue;
+            min=route[1];
+            count++;
+        }
+                
+        return count;
+    }
+}

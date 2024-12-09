@@ -1,0 +1,67 @@
+import java.util.LinkedList;
+import java.util.HashMap;
+
+class Solution {
+
+    LinkedList<Pair> list = new LinkedList<>();
+
+    HashMap<String, Integer> check = new HashMap<String, Integer>();
+
+    public int solution(int cacheSize, String[] cities) {
+        if (cacheSize == 0){
+            return cities.length * 5;
+        }
+
+        int answer = 0;
+        for(int i = 0;i< cities.length;i++){
+            String city = cities[i].toUpperCase();
+            if(check.getOrDefault(city,0) == 0){ // 큐에 city가 없을 때
+                Pair tmp = new Pair(i+1, city);
+                check.put(city, 1);
+                if(list.size() >= cacheSize){ 
+                    // 만약에 queue가 full 일 때 
+                    // LRU 삭제 부분 
+                    Pair lst = list.getLast();
+                    check.remove(lst.city);
+                    list.pollLast();
+                }
+                list.addFirst(tmp);   
+                answer += 5;
+            }else{
+                // LRU 기록 부분 
+                int k = 0;
+                for(;k<list.size();k++){
+                    if(city.equals(list.get(k).city)){
+                        break;
+                    }
+                }
+                Pair cur = list.get(k); 
+                list.remove(k);
+                list.addFirst(cur);
+                answer+=1;
+            }
+
+        }
+        return answer;
+    }
+
+
+
+    class Pair implements Comparable<Pair>{
+        int time;
+        String city;
+        Pair(int time, String city){
+            this.time = time;
+            this.city = city;
+        }
+
+        @Override
+        public int compareTo(Pair other){
+            if(this.time != other.time){
+                return Integer.compare(this.time, other.time);
+            }else{
+                return this.city.compareTo(other.city);
+            }
+        }
+    }
+}

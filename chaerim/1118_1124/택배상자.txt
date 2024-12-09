@@ -1,0 +1,28 @@
+import java.util.*;
+import java.util.stream.*;
+class Solution {
+    public int solution(int[] order) {
+         int answer = 0;
+         Stack<Integer> stack = new Stack<>();
+         int cur = 1;
+         int cnt = 0;        
+         while(cnt < order.length){
+             int target = order[cnt++];
+             if(cur <= target){
+                 while(cur != target){
+                     stack.push(cur++);
+                 }
+                 cur++;
+                 answer++;
+             }
+             else{ 
+                if(stack.isEmpty() || stack.peek() != target) break;
+                else{
+                    answer++;
+                    stack.pop();
+                } 
+             }
+         }
+         return answer;
+    }
+}

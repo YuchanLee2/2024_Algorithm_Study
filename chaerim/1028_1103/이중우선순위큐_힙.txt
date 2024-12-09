@@ -1,0 +1,36 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(String[] operations) {
+        
+
+        PriorityQueue<Integer> minPq = new PriorityQueue<>();
+
+        PriorityQueue<Integer> maxPq = new PriorityQueue<>(Collections.reverseOrder());
+        
+
+        for (String operation : operations) {
+
+            String[] instruction = operation.split(" ");
+            
+            if (instruction[0].equals("I")) {
+                int value = Integer.parseInt(instruction[1]);
+                minPq.add(value);
+                maxPq.add(value);
+            }
+            else if (!minPq.isEmpty() && instruction[1].equals("-1")) {
+                maxPq.remove(minPq.poll());
+            }
+            else if (!maxPq.isEmpty() && instruction[1].equals("1")) {
+                minPq.remove(maxPq.poll());
+            }
+        }
+        
+        
+        if (minPq.isEmpty() && maxPq.isEmpty()) {
+            return new int[] {0, 0};
+        }
+        
+        return new int[] {maxPq.poll(), minPq.poll()};
+    }
+}
