@@ -1,0 +1,38 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int bridge_length, int weight, int[] truck_weights) {
+        // 다리 위에 올라간 트럭들의 무게를 관리하는 큐
+        Queue<Integer> bridge = new LinkedList<>();
+        
+        int time = 0;   // 전체 시간
+        int currentWeight = 0;  // 현재 다리 위의 트럭들의 총 무게
+        int index = 0;  // 현재 트럭의 인덱스
+        
+        // 다리 길이만큼 빈 공간을 큐에 추가 (0으로 초기화)
+        for (int i = 0; i < bridge_length; i++) {
+            bridge.add(0);
+        }
+
+        while (index < truck_weights.length) {
+            time++;  // 1초 증가
+
+            // 다리에서 맨 앞의 트럭을 내리기 (무게 빼기)
+            currentWeight -= bridge.poll();
+
+            // 새 트럭이 다리에 올라갈 수 있는지 확인
+            if (currentWeight + truck_weights[index] <= weight) {
+                // 올라갈 수 있으면 다리 위에 올리고, 무게 추가
+                bridge.add(truck_weights[index]);
+                currentWeight += truck_weights[index];
+                index++;  // 다음 트럭으로
+            } else {
+                // 올라갈 수 없다면 0을 추가하여 대기
+                bridge.add(0);
+            }
+        }
+
+        // 마지막 트럭이 다리 위에서 나오는 시간을 더해줌
+        return time + bridge_length;
+    }
+}
