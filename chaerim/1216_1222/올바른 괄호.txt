@@ -1,0 +1,18 @@
+import java.util.*;
+
+class Solution {
+    boolean solution(String s) {
+        Stack<Character> stack = new Stack<>();
+        for (char cur : s.toCharArray()) {
+            if (cur == '(') {
+                stack.push('('); // 열린 괄호는 스택에 넣기
+            } else if (cur == ')') {
+                if (stack.isEmpty()) {
+                    return false; // 닫힌 괄호가 먼저 나오면 유효하지 않음
+                }
+                stack.pop(); // 열린 괄호와 짝을 맞추기 위해 pop
+            }
+        }
+        return stack.isEmpty(); // 스택이 비어 있으면 유효한 괄호
+    }
+}
