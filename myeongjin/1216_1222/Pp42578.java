@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class P42578 {
+class Pp42578 {
     public static ArrayList<Integer> solution(int[] progresses, int[] speeds) {
 
         Queue<Integer> q = new LinkedList<>();
