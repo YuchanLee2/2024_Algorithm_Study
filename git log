@@ -1,0 +1,90 @@
+[33mcommit d707e6e4655b995ae08baa5cfb792cf9b9174483[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmyeongjin[m[33m, [m[1;31morigin/myeongjin[m[33m)[m
+Author: myeong jin <kangya16@gmail.com>
+Date:   Thu Sep 12 23:50:29 2024 +0900
+
+    test 1
+
+[33mcommit f894a66a5a3213f074528b04710e95d8490c88ae[m
+Author: myeong jin <kangya16@gmail.com>
+Date:   Thu Sep 12 19:48:19 2024 +0900
+
+    240912_코딩마스터스_6번
+
+[33mcommit c3bcd6a81c78a0138f12a457353b9d553325f4db[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: YuchanLee2 <106137298+YuchanLee2@users.noreply.github.com>
+Date:   Mon Sep 9 14:16:46 2024 +0900
+
+    Update README.md
+
+[33mcommit 949fb76d4e08f8d0d6351ca5d7c9bae7f125782b[m
+Author: YuchanLee2 <106137298+YuchanLee2@users.noreply.github.com>
+Date:   Mon Sep 9 14:15:52 2024 +0900
+
+    Update README.md
+
+[33mcommit 96f0689d7f9af38da57c83c1a80a6952f9f0606d[m
+Author: YuchanLee2 <106137298+YuchanLee2@users.noreply.github.com>
+Date:   Mon Sep 9 03:27:00 2024 +0900
+
+    Update README.md
+
+[33mcommit 54a10b616b7b36210117363e22c9937074a257aa[m
+Author: YuchanLee2 <106137298+YuchanLee2@users.noreply.github.com>
+Date:   Mon Sep 9 03:23:15 2024 +0900
+
+    Update README.md
+
+[33mcommit 371ae594a366e17822cef64650fd66087821b0f4[m
+Author: YuchanLee2 <106137298+YuchanLee2@users.noreply.github.com>
+Date:   Mon Sep 9 03:20:23 2024 +0900
+
+    Create README.md
+
+[33mcommit 0211d55df07bd2ac95fc96d53f2d9186522a8516[m
+Author: LeeYuchan <dldbcks7758@naver.com>
+Date:   Mon Sep 9 03:18:24 2024 +0900
+
+    빈 폴더들 추가
+
+[33mcommit f09aeb88843771c404f23c0c33a1b50c77af8d44[m
+Author: LeeYuchan <dldbcks7758@naver.com>
+Date:   Mon Sep 9 03:12:48 2024 +0900
+
+    빈 폴더 추가
+
+[33mcommit 5590ecdec06e4909222be0ea3fb8a37a35138fd2[m
+Merge: 3811560 4d72f13
+Author: LeeYuchan <dldbcks7758@naver.com>
+Date:   Mon Sep 9 03:02:10 2024 +0900
+
+    Merge branch 'main' of https://github.com/YuchanLee2/2024_Algorithm_Study
+
+[33mcommit 4d72f13590b9e7adcf085af9236f9d3adddb2d89[m
+Author: YuchanLee2 <106137298+YuchanLee2@users.noreply.github.com>
+Date:   Mon Sep 9 03:01:41 2024 +0900
+
+    Delete 2024_Algorithm_Study directory
+
+[33mcommit 381156072b47a5ae2664ce191b8812dfb6e27b3e[m
+Author: LeeYuchan <dldbcks7758@naver.com>
+Date:   Mon Sep 9 02:59:28 2024 +0900
+
+    test
+
+[33mcommit bc74b2010460948384ecd77b0a98e8639bf9df72[m
+Author: YuchanLee2 <106137298+YuchanLee2@users.noreply.github.com>
+Date:   Mon Sep 9 02:58:45 2024 +0900
+
+    Delete yuchan/0909_0915 directory
+
+[33mcommit 6decfe5ebddd32ae101332174c8f6f71b76f91fd[m
+Author: YuchanLee2 <106137298+YuchanLee2@users.noreply.github.com>
+Date:   Mon Sep 9 02:57:33 2024 +0900
+
+    Add files via upload
+
+[33mcommit 022d6df59b0e47be94aed71affe4be873838b59a[m
+Author: LeeYuchan <dldbcks7758@naver.com>
+Date:   Mon Sep 9 02:53:18 2024 +0900
+
+    test.py

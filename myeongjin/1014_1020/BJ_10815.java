@@ -26,7 +26,7 @@ public class BJ_10815 {
         int left = 0; 
         int right = N-1; 
 
-        while(left <= right){ //left가 rigth보다 큰 경우는 이진 탐색 규칙에 어긋나므로 반복문 돌리지 X
+        while(left <= right){ //left가 rigth보다 큰 경우/ 반복문  X
             int mid = (left + right)/2; //중간 인덱스는 왼쪽 오른쪽의 더한 값에 나누기 2
             int midValue = arr[mid]; //중간 인덱스에 해당되는 값 => 이 값으로 비교
 
