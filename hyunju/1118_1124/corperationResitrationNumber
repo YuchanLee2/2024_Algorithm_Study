@@ -1,0 +1,66 @@
+import java.util.*;
+import java.io.*;
+/*
+ * 등기관서별 분류번호 4자리
+ * 법인 종류별 분류번호 2자리
+ * 일렬번호 6자리
+ * 오류 검색 번호 1자리
+ * 오류 번호 제외 append 후 A = 짝수의 합, B = 홀수의 합
+ * 오류 검색 번호 = 2 * A + B
+ * 
+ * 기본 제공 법인 번호 종류 list
+ * 
+ * 순서 1.list에서 순서대로 하나씩 가져와 문자열들을 합친다. 
+ * 순서 2.해당 문자열이 각 법인 종류에 해당될 가능성이 있는지 확인한다.
+ * 순서 2-1. 해당 법인 숫자로 계산했을 때 오류 검색번호가 일치해야하는데
+ *           만약 해당 법인 숫자가 하나라도 가능하면 o 모두 불가능하면 x
+ *           -> if문? 해당 범위중에 가능하면 결과에 append할 수 있게?
+ *           -> 결과 sb 따로
+ */
+
+public class corperationRestratrionNumber{
+    public static void main(String(args)){
+        
+        Scanner scanner = new Scanner(System.in);
+
+        int a = scanner.nextInt(); //등기관서별 4개
+        int b = scanner.nextInt(); //일렬번호 2개
+        int c = scanner.nextInt(); //오류 번호 1개
+
+        int []input = { 
+            11,12,13,14,15,
+            21,22,
+            31,32,33,34,35,36,37,38,39,
+            40,41,42,43,44,45,46,47,48,49,
+            50,51,
+            81,82,83,84,85,86,
+            71
+        }
+
+        boolean [] check = [false, false, false, false, false, false, false];
+
+        List<String> result = new ArrayList<>(); // 결과
+
+        // 문자열 합치기
+        for(int i : input){
+            StringBuilder sb = new StringBuilder();// 문자열로 합치기
+            String numbers = sb.append(a).append(i).append(b).toString();
+            
+            // 해당 번호의 짝수, 홀수의 합 결과 계산과 오류번호와 동일한지 확인
+            if(checkErrorNum()){
+                // 해당 숫자가 어디에 해당하는지 확인하는 함수
+                iscorperationNumber(i);
+            }
+        }
+
+        
+    }
+    // -> 해당 숫자가 true인 경우 해당 숫자가 무엇인지 보고? 
+    private static void iscorperationNumber(input i){
+        if(i>=11 && i<=15) check[0] = true;
+        else if(i>=21 && i<=22) check[1] = true;
+        else if(i>=31 && i<=51) check[2] = true;
+        else if(i>=81 && i<=86) check[3] = true;
+        else if(i == 7) check[4]== true;
+    }
+}

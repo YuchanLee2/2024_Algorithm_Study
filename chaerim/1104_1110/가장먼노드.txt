@@ -1,0 +1,70 @@
+import java.util.*;
+class Solution {
+    
+    class Node{
+        int num; 
+        List<Node> edge; 
+        boolean visited; 
+        int distance; 
+        
+        Node(int num){
+            this.num = num;
+            this.distance = 0;
+            this.edge = new LinkedList<>();
+        }
+        
+        void add(Node node){
+            edge.add(node);
+        }
+                
+    }
+    public int solution(int n, int[][] edge) {
+        int answer = 0;
+        
+        try{
+         
+            List<Node> list = new ArrayList<>();
+            for(int i=0; i<n+1; i++){
+                Node node = new Node(i);
+                list.add(node);
+            }
+            
+            for(int[] e : edge){
+                Node node1 = list.get(e[0]);
+                Node node2 = list.get(e[1]);
+                node1.add(node2);
+                node2.add(node1);
+            }
+
+            int max = 0;
+
+            Queue<Node> que = new LinkedList<>();
+            Node first = list.get(1);
+            first.visited = true;
+            que.offer(first);
+
+            while(!que.isEmpty()){
+  
+                Node now = que.poll();
+               
+                for(Node next : now.edge){
+                    if(next.visited) continue;
+                    next.distance = now.distance+1; 
+                    next.visited = true; 
+                    que.offer(list.get(next.num)); 
+                    max = Math.max(max,next.distance); 
+                    
+                }
+            }
+            
+
+            for(Node node : list){
+                if(node.distance==max) answer++;
+            }
+          
+        }catch(Exception e){
+            e.printStackTrace(); 
+        }
+        return answer;
+    }
+}

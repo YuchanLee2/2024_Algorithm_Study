@@ -1,0 +1,176 @@
+/* 코딩 마스터스 기초 1-10번
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+/* 1. 기초_비밀번호 찾기
+        Scanner scanner = new Scanner(System.in);
+
+        String input = scanner.nextLine();
+        String[] characters = input.split(" ");
+
+        StringBuilder result = new StringBuilder();
+
+        for (String charac : characters) {
+            result.append(charac).append(" ");
+            if (charac.equals("c")) {
+                break;
+            }
+        }
+
+        // 결과 출력
+        System.out.println(result.toString().trim());
+
+ */
+
+/* 2. 기초_등차수열
+        Scanner scanner = new Scanner(System.in);
+
+        int a = scanner.nextInt();
+
+        int b = scanner.nextInt();
+
+        int c = scanner.nextInt();
+
+        int AP = (c-1)*b + a;
+
+        System.out.println(AP);
+*/
+
+/* 3. 기초_ 8진수 & 16진수 변환
+        Scanner scanner = new Scanner(System.in);
+
+        int a = scanner.nextInt();
+        int b = a;
+        StringBuilder sb_oct = new StringBuilder();
+        StringBuilder sb_hex = new StringBuilder();
+        while(a > 0){
+            sb_oct.append(a % 8);
+            a = a/8;
+        }
+        while(b > 0){
+
+            switch (b % 16){
+                case 10 :
+                    sb_hex.append('A');
+                    break;
+                case 11 :
+                    sb_hex.append('B');
+                    break;
+                case 12 :
+                    sb_hex.append('C');
+                    break;
+                case 13 :
+                    sb_hex.append('D');
+                    break;
+                case 14 :
+                    sb_hex.append('E');
+                    break;
+                case 15 :
+                    sb_hex.append('F');
+                    break;
+                default :
+                    sb_hex.append(b % 16);
+            }
+            b = b/16;
+        }
+
+        System.out.println(sb_oct.reverse() + " " + sb_hex.reverse());
+        */
+
+/* 4. 기초_아스키코드
+        Scanner scanner = new Scanner(System.in); 
+        int a = scanner.nextInt(); 
+        System.out.println((char) a); 
+ */
+
+/* 5. 기초_아이디 만들기
+        Scanner scanner = new Scanner(System.in);
+
+        String a = scanner.next();
+
+        if(a.length() > 20){
+            System.out.println('I');
+        }
+        else  System.out.println('P');
+*/
+
+/* 6. 기초_가장 큰 나머지
+        Scanner scanner = new Scanner(System.in);
+
+        int a = scanner.nextInt();
+
+        int th = a % 5;
+        int sev = a % 7;
+
+        System.out.println(th > sev ? th : sev);
+*/
+/* 7. 기초_1등급 한우
+        Scanner scanner = new Scanner(System.in);
+
+        int a = scanner.nextInt();
+
+        if(a > 200) System.out.println('A');
+        else if(a > 180) System.out.println('B');
+        else if(a > 150) System.out.println('C');
+        else System.out.println('D');
+
+
+ */
+
+/* 8. 기초_자녀의 키는
+        Scanner scanner = new Scanner(System.in);
+
+        String a = scanner.nextLine(); //공백을 포함해서 받으려면 Line next()는 공백 이전 까지만 읽어드린다.
+        String cnt[] = a.split(" ");
+        int result = ((Integer.parseInt(cnt[0]) +Integer.parseInt(cnt[1]))/cnt.length);
+
+        System.out.println(result);
+
+ */
+
+/* 9. 기초_삼각형의 조건
+        Scanner scanner = new Scanner(System.in);
+
+        String tri = scanner.nextLine();
+        String tri_int[] = tri.split(" ");
+
+        int a = Integer.parseInt(tri_int[0]);
+        int b = Integer.parseInt(tri_int[1]);
+        int c = Integer.parseInt(tri_int[2]);
+
+        if(a>0 && b>0 && c>0 && (a+c+b) ==180) System.out.println('P');
+
+        else System.out.println('F');
+
+ */
+
+/* 10.기초_기억상실
+        Scanner scanner = new Scanner(System.in);
+
+        String rem = scanner.nextLine();
+        String rem_int[] = rem.split(" ");
+
+        int A = Integer.parseInt(rem_int[0]);
+        int B = Integer.parseInt(rem_int[1]);
+        int N = Integer.parseInt(rem_int[2]);
+
+
+        //하루에 외우는 양 (A-B)
+        //마지막날 외운 건 안 까먹음(N-A)
+        //(N-A)하고 남은 걸 며칠동안 외운는가? (N-A) / (A-B)
+        //나머지가 존재하면 +1일
+
+        int day = (N-A)/(A-B);
+        if((N-A)%(A-B) != 0) day++;
+
+        day++; //마지막 날
+
+        System.out.println(day);
+
+ */
+    }
+}
+
+*/

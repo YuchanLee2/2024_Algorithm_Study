@@ -1,0 +1,32 @@
+import java.util.*;
+class Solution {
+    public String solution(String number, int k) {
+        
+        int remove = 0;
+        
+        Stack<Character> stack = new Stack<>();
+        
+        for(char c : number.toCharArray()){
+            while(remove<k && !stack.isEmpty() && stack.peek()< c){
+                stack.pop();
+                remove++;  
+            }
+            stack.push(c);
+        }
+        while(remove<k && !stack.isEmpty()){
+            stack.pop();
+            remove++;
+        }
+        LinkedList<Character> list = new LinkedList<>();
+        while(!stack.isEmpty()){
+            list.addFirst(stack.pop());
+        }
+        
+        StringBuffer sb = new StringBuffer();
+        for(Character c : list){
+            sb.append(c);
+        }
+
+        return sb.toString();
+    }
+}

@@ -1,0 +1,42 @@
+import java.util.*;
+class Solution {
+    public int solution(int[] priorities, int location) {
+       
+        int answer = 0;
+       
+        boolean[] visited = new boolean[priorities.length];
+ 
+        Queue<int[]> que = new LinkedList<>();
+        
+        for(int i=0;i<priorities.length;i++){
+            que.offer(new int[]{i,priorities[i]});
+        }
+        
+        while(!que.isEmpty()){
+            int[] now = que.poll();
+            int i=now[0]; 
+            int n=now[1]; 
+            visited[i]=true;  
+            boolean isHighOrder = false;   
+           
+            for(int j=0;j<priorities.length;j++){
+                if(visited[j]) continue; 
+                if(n<priorities[j]) {
+                    isHighOrder = true;
+                    break;
+                }
+            }
+                    
+            if(isHighOrder){
+                que.offer(new int[]{i,n});
+                visited[i]=false;
+            }else{ 
+                answer+=1;
+                if(i==location){
+                    break;
+                }
+            }
+        }
+        return answer;
+    }
+}

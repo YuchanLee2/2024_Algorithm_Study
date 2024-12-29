@@ -1,0 +1,31 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int[] scoville, int K) {
+        int result = 0;
+        
+        PriorityQueue<Integer> pqScov = new PriorityQueue<>();
+        
+        
+        for (int n : scoville) {
+            pqScov.add(n);
+        }
+                
+        while (pqScov.size() > 1) {
+           
+            if (pqScov.peek() >= K) 
+                return result;
+            
+            int leastHot = pqScov.poll();
+            int secondLeastHot = pqScov.poll();
+            
+            pqScov.add(leastHot + secondLeastHot * 2);
+            result++;
+        }
+        
+        if (pqScov.peek() >= K)
+            return result;
+        
+        return -1;
+    }
+}

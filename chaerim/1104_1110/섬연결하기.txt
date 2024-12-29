@@ -1,0 +1,49 @@
+import java.util.*;
+class Solution {
+    public int solution(int n, int[][] costs) {
+    	List<List<Node>> graph = new ArrayList<>(); 
+        for(int i = 0 ; i < n ; i++){
+            graph.add(new ArrayList<>());
+        }
+        
+        for(int[] c: costs){
+            int s = c[0];
+            int e = c[1];
+            int w = c[2];
+            
+            graph.get(s).add(new Node(e,w));
+            graph.get(e).add(new Node(s,w));
+        }
+        
+        boolean[] isMST = new boolean[n];
+        PriorityQueue<Node> pq = new PriorityQueue<>((o1,o2) -> o1.w-o2.w);
+        
+        isMST[0] = true;
+        for(Node node : graph.get(0)){
+            pq.offer(node);
+        }
+        
+        int cnt = 0;
+        int ans = 0;
+        while(cnt < n-1){
+            Node cur = pq.poll();
+            if(isMST[cur.e]) continue;
+            
+            ans+= cur.w;
+            isMST[cur.e] = true;
+            cnt++;
+            for(Node node : graph.get(cur.e)){
+                if(isMST[node.e]) continue;
+                pq.offer(node);
+            }
+        }
+        return ans;
+    }
+    class Node{
+        int e,w;
+        Node(int e,int w){
+            this.e=e;
+            this.w=w;
+        }
+    }
+}

@@ -1,0 +1,85 @@
+import java.util.*;
+class Solution {
+
+    class Node{
+        int num;         
+        List<Node> edge; 
+        boolean visited; 
+        
+        Node(int num){
+            this.num = num;
+            this.edge = new LinkedList<>();
+        }
+
+        void add(Node node){
+            edge.add(node);
+        }
+    }
+    public int solution(int n, int[][] wires) {
+
+        List<Node> list = new ArrayList<>();
+        
+        for(int i=0; i<n+1; i++){
+            Node node = new Node(i);
+            list.add(node);
+        }
+        
+
+        for(int[] w : wires){
+            Node node1 = list.get(w[0]);
+            Node node2 = list.get(w[1]);
+            node1.add(node2);
+            node2.add(node1);
+        }
+        
+
+        int min = 100;
+
+        for(int i=1;i<n+1;i++){
+
+            Node first = list.get(i);
+            for(Node second : first.edge){
+
+                int cnt1 = bfs(first, second, list, n);
+                int cnt2 = bfs(second, first, list, n); 
+                
+
+                min = Math.min(min,Math.abs(cnt1-cnt2));
+                
+            }
+        }
+        
+        //int answer = -1;
+        return min;
+    }
+    
+    private int bfs(Node first, Node second, List<Node> list, int n){
+
+        for(int i=1;i<n+1;i++){
+            list.get(i).visited=false;
+        }
+        
+        first.visited = true;
+        second.visited = true;
+
+        Queue<Node> que = new LinkedList<>();
+        que.offer(first);
+        
+
+        int cnt=0;
+        while(!que.isEmpty()){
+
+            Node now = que.poll();
+
+            for(Node next : now.edge){
+                if(next.visited) continue;
+                next.visited = true;
+                que.offer(list.get(next.num));
+            }
+
+            cnt++;
+        }
+
+        return cnt;
+    }
+}

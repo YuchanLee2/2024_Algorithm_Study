@@ -1,0 +1,27 @@
+class Solution {
+    public long solution(int n, int[] times) {
+
+        long start = 0; 
+        long end = 1000000000 * 1000000000L; 
+        
+        while(end>start){
+            long minute = (start + end) / 2; 
+
+            if(isValidCheck(times,minute,n)){ 
+                end = minute; 
+
+            }else{
+                start = minute+1; 
+            }
+        }
+        return start;
+    }
+    
+    private boolean isValidCheck(int[] times, long minute, int n){
+        long count = 0;
+        for(int time : times){ 
+            count += minute/time;
+        }
+        return count >= n;
+    }
+}

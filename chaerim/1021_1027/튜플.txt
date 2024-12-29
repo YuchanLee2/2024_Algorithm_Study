@@ -1,0 +1,39 @@
+import java.util.*;
+class Solution {
+    ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+    ArrayList<Integer> answer = new ArrayList<>();
+    public int[] solution(String s) {
+        int st = 1;
+        int et = 1;
+        for(int i = 1; i < s.length() - 1; i++){
+            char cur = s.charAt(i);
+            if(cur == '}'){
+                String str = s.substring(st + 1, i);
+                String [] split = str.split(",");
+                ArrayList<Integer> temp = new ArrayList<>();
+                for(String next : split){
+                    temp.add(Integer.parseInt(next));
+                }
+                list.add(temp);
+                st = i + 2;
+            }
+        }
+        Collections.sort(list, (o1, o2) -> {
+           return o1.size() - o2.size(); 
+        });
+        
+        int [] answer = new int [list.get(list.size()-1).size()];
+        Set<Integer> set = new HashSet<>();
+        
+        int cnt = 0;
+        for(ArrayList<Integer> cur : list){
+            for(int next : cur){
+                if(set.contains(next)) continue;
+                answer[cnt++] = next;
+                set.add(next);
+                break;
+            }    
+        }
+        return answer;
+    }
+}
