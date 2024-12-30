@@ -1,0 +1,29 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int[] scoville, int K) {
+        // 최소 힙 생성
+        PriorityQueue<Integer> heap = new PriorityQueue<>();
+        for(int s : scoville){
+            heap.offer(s);
+        }
+        
+        int mixes = 0;
+        
+        // 힙에 최소 두 개의 요소가 있고, 가장 작은 요소가 K 미만인 동안 반복
+        while(heap.size() >= 2 && heap.peek() < K){
+            int first = heap.poll();
+            int second = heap.poll();
+            int new_scovile = first + (second * 2);
+            heap.offer(new_scovile);
+            mixes++;
+        }
+        
+        // 힙의 가장 작은 요소가 K 이상인지 확인
+        if(heap.peek() >= K){
+            return mixes;
+        } else {
+            return -1;
+        }
+    }
+}

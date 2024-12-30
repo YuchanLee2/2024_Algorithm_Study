@@ -1,0 +1,44 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(String[] operations) {
+        // TreeMap을 사용하여 키를 오름차순으로 정렬하고, 각 키의 빈도를 저장
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        
+        for (String operation : operations) {
+            String[] instruction = operation.split(" ");
+            String cmd = instruction[0];
+            int value = Integer.parseInt(instruction[1]);
+            
+            if (cmd.equals("I")) {
+                // 삽입: 키의 빈도 증가
+                map.put(value, map.getOrDefault(value, 0) + 1);
+            } else if (cmd.equals("D")) {
+                if (map.isEmpty()) continue;
+                if (value == 1) {
+                    // 최댓값 삭제
+                    int max = map.lastKey();
+                    if (map.get(max) == 1) {
+                        map.remove(max);
+                    } else {
+                        map.put(max, map.get(max) - 1);
+                    }
+                } else if (value == -1) {
+                    // 최솟값 삭제
+                    int min = map.firstKey();
+                    if (map.get(min) == 1) {
+                        map.remove(min);
+                    } else {
+                        map.put(min, map.get(min) - 1);
+                    }
+                }
+            }
+        }
+        
+        if (map.isEmpty()) {
+            return new int[] {0, 0};
+        } else {
+            return new int[] {map.lastKey(), map.firstKey()};
+        }
+    }
+}
