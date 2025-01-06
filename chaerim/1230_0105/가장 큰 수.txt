@@ -1,0 +1,33 @@
+import java.util.*;
+
+class Solution {
+    public String solution(int[] numbers) {
+        // 1. 숫자들을 문자열로 변환
+        String[] strNumbers = new String[numbers.length];
+        for (int i = 0; i < numbers.length; i++) {
+            strNumbers[i] = String.valueOf(numbers[i]);
+        }
+
+        // 2. Comparator를 사용하여 정렬 (두 수를 비교하여 더 큰 수가 앞에 오도록)
+        Arrays.sort(strNumbers, new Comparator<String>() {
+            @Override
+            public int compare(String a, String b) {
+                // 두 문자열을 이어 붙인 값 비교
+                return (b + a).compareTo(a + b);
+            }
+        });
+
+        // 3. 정렬된 문자열 배열을 하나의 문자열로 결합
+        StringBuilder result = new StringBuilder();
+        for (String num : strNumbers) {
+            result.append(num);
+        }
+
+        // 4. "0"만 있는 경우 "0"을 반환
+        if (result.charAt(0) == '0') {
+            return "0";
+        }
+
+        return result.toString();
+    }
+}
