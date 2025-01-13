@@ -1,0 +1,40 @@
+import java.util.*;
+
+class Solution {
+    Set<Integer> sum = new HashSet<>(); // 중복 허용 x
+    
+    // 소수 판별 함수
+    private boolean isPrime(int n) {
+        if (n < 2) return false; 
+        int sqrt = (int) Math.sqrt(n);
+        for (int i = 2; i <= sqrt; i++) { // 2부터 sqrt(n)까지 검사
+            if (n % i == 0) return false; // 소수x
+        }
+        return true; // 소수
+    }
+
+    // 숫자의 모든 조합 생성
+    private void generateCombinations(String str, String remaining) {
+        // 현재 조합이 비어 있지 않으면 숫자로 변환
+        if (!str.isEmpty()) {
+            int num = Integer.parseInt(str); // 문자->숫자
+            if (isPrime(num)) { // 소수면면
+                sum.add(num); // Set에 추가
+            }
+        }
+        // 순열 생성: 남은 숫자들로 새로운 조합 생성
+        for (int i = 0; i < remaining.length(); i++) {
+            generateCombinations(
+                str + remaining.charAt(i), // 현재 문자 추가
+                remaining.substring(0, i) + remaining.substring(i + 1) // 나머지 문자
+            );
+        }
+    }
+
+    // 메인 솔루션 함수
+    public int solution(String numbers) {
+        sum.clear(); // Set 초기화
+        generateCombinations("", numbers); 
+        return sum.size(); 
+    }
+}
