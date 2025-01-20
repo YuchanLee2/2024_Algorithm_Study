@@ -1,0 +1,45 @@
+import java.util.*;
+class Solution {
+    public String solution(String number, int k) {
+        
+        // remove 카운트
+        int remove = 0;
+        
+        // 문자 비교용 stack
+        Stack<Character> stack = new Stack<>();
+        
+        // 모든 문자를 검사한다.
+        for(char c : number.toCharArray()){
+            // 1. remove 카운트가 k 보다작으면
+            // 2. stack이 비어있지 않으면
+            // 3. stack이 c보다 작으면
+            // 즉, 앞에 숫자가 뒤에 숫자보다 작으면 삭제
+            while(remove<k && !stack.isEmpty() && stack.peek()< c){
+                stack.pop(); // 삭제
+                remove++;    // remove 카운트 증가
+            }
+            // stack에 넣는다 
+            stack.push(c);
+        }
+        // remove카운트가 k만큼 돌지 않았다면
+        // 즉, 숫자 비교시 앞에 숫자가 뒤에 숫자보다 작지 않은 경우
+        while(remove<k && !stack.isEmpty()){
+            stack.pop();
+            remove++;
+        }
+        // 스택은 후위 연산이기 때문에, LinkedList로 재구성한다.(원래 문자로)
+        LinkedList<Character> list = new LinkedList<>();
+        while(!stack.isEmpty()){
+            list.addFirst(stack.pop());
+        }
+        
+        // String 버퍼에 재구성한 문자를 넣는다
+        StringBuffer sb = new StringBuffer();
+        for(Character c : list){
+            sb.append(c);
+        }
+
+        // String 버퍼를 String으로 변환하여 리턴 
+        return sb.toString();
+    }
+}
