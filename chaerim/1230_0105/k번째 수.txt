@@ -1,0 +1,20 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] array, int[][] commands) {
+        int[] answer = new int[commands.length];
+        
+        for (int i = 0; i < commands.length; i++) {
+            // 1. 명령에 맞는 부분 배열 생성
+            int[] subArray = Arrays.copyOfRange(array, commands[i][0] - 1, commands[i][1]);
+            
+            // 2. 부분 배열 정렬
+            Arrays.sort(subArray);
+            
+            // 3. 원하는 인덱스 값 추출 (명령의 3번째 값에 맞는 인덱스)
+            answer[i] = subArray[commands[i][2] - 1];
+        }
+        
+        return answer;
+    }
+}

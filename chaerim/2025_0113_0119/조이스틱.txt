@@ -1,0 +1,27 @@
+class Solution {
+    public int solution(String name) {
+        int totalMoves = 0;
+        int len = name.length();
+
+        int nextNonA; // 'A'가 아닌 다음 문자 위치를 추적
+        int minMove = len; // 이동 거리의 최소값 초기화
+        
+        for (int i = 0; i < len; i++) {
+            // 현재 문자를 원하는 문자로 변경하는 데 필요한 조작 수 계산
+            int charMove = Math.min(name.charAt(i) - 'A', 'Z' - name.charAt(i) + 1);
+            totalMoves += charMove;
+
+            // 'A'가 아닌 다음 문자를 찾음
+            nextNonA = i + 1;
+            while (nextNonA < len && name.charAt(nextNonA) == 'A') {
+                nextNonA++;
+            }
+            
+            // 이동 거리의 최소값 계산
+            minMove = Math.min(minMove, i * 2 + len - nextNonA); // 현재 위치에서 돌아가는 경우
+            minMove = Math.min(minMove, (len - nextNonA) * 2 + i); // 뒤에서 앞으로 가는 경우
+        }
+
+        return totalMoves + minMove;
+    }
+}

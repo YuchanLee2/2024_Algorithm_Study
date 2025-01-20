@@ -1,0 +1,15 @@
+class Solution {
+    public int[] solution(int brown, int yellow) {
+        int area = brown + yellow; // 전체 격자 수
+        for (int height = 3; height <= area / height; height++) { // 최소 높이는 3부터 시작
+            if (area % height == 0) { // 나누어 떨어질 때만 처리
+                int width = area / height; // 가로 길이 계산
+                // 테두리 조건 검증
+                if ((width - 2) * (height - 2) == yellow) {
+                    return new int[]{width, height}; // 결과 반환
+                }
+            }
+        }
+        return new int[0]; // 실패 시 빈 배열 반환 (문제 조건 상 발생하지 않음)
+    }
+}
